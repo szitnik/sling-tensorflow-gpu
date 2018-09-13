@@ -281,8 +281,16 @@ def main(_):
     return predictions
 
   # Create a local session to run the training.
+
+
+
+  # Tensorflow porabi vse resurse, ki so na voljo, ne toliko, kolikor rabi oziroma kar je alocirano prek upravljavca nalog.
+  # To popravimo tako, da ze pri vzpostavitvi seje dolocimo, da se rama ne alocira vnaprej:
+  config = tf.ConfigProto()
+  config.gpu_options.allow_growth = True  
+
   start_time = time.time()
-  with tf.Session() as sess:
+  with tf.Session(config = config) as sess:
     # Run all the initializers to prepare the trainable parameters.
     tf.global_variables_initializer().run()
     print('Initialized!')
