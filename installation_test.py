@@ -1,6 +1,6 @@
 # Python
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]=“0"
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 import tensorflow as tf
 hello = tf.constant('Hello, TensorFlow!')
